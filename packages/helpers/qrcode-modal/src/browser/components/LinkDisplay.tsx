@@ -101,7 +101,7 @@ function LinkDisplay(props: LinkDisplayProps) {
             })
           ) : (
             <>
-              <p>{error ? `Something went wrong` : `Loading...`}</p>
+              <p>{error ? `Something went wrong` : `No wallets available`}</p>
             </>
           )
         ) : (
