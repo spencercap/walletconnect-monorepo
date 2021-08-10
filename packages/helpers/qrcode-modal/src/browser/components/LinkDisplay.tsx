@@ -1,14 +1,13 @@
 import * as React from "react";
-import { IMobileRegistryEntry, IQRCodeModalOptions, IAppRegistry } from "@walletconnect/types";
+import { IMobileRegistryEntry, IQRCodeModalOptions } from "@walletconnect/types";
 import {
   isAndroid,
   formatIOSMobile,
   saveMobileLinkInfo,
   getMobileLinkRegistry,
-  getWalletRegistryUrl,
-  formatMobileRegistry,
 } from "@walletconnect/browser-utils";
 
+import { registry, formatMobileRegistry } from "../registry";
 import { DEFAULT_BUTTON_COLOR, WALLETCONNECT_CTA_TEXT_ID } from "../constants";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -43,8 +42,6 @@ function LinkDisplay(props: LinkDisplayProps) {
     const initMobileLinks = async () => {
       if (android) return;
       try {
-        const url = getWalletRegistryUrl();
-        const registry = (await fetch(url).then(x => x.json())) as IAppRegistry;
         const platform = props.mobile ? "mobile" : "desktop";
         const _links = getMobileLinkRegistry(formatMobileRegistry(registry, platform), whitelist);
 
