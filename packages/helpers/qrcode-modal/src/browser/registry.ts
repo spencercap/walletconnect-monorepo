@@ -41,8 +41,7 @@ export const registry: IAppRegistry = {
 
 export function getAppLogoUrl(id: string): string {
   if (id === officialAlgorandWallet.id) {
-    // TODO: return URL for Algorand Wallet
-    return "";
+    return "https://algorand-app.s3.amazonaws.com/app-icons/Algorand-WalletConnect-128.png";
   }
   return "";
 }
