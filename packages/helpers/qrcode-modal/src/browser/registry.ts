@@ -1,4 +1,4 @@
-import { IAppRegistry, IAppEntry, IMobileRegistryEntry } from "@walletconnect/types";
+import { IAppRegistry, IAppEntry } from "@walletconnect/types";
 
 const officialAlgorandWallet: IAppEntry = {
   // hex encoding of 32 random bytes
@@ -9,6 +9,13 @@ const officialAlgorandWallet: IAppEntry = {
     // need to change once a standard emerges, perhaps https://github.com/ChainAgnostic/CAIPs/pull/55
     "algorand",
   ],
+  // randomly generated UUID
+  image_id: "1765f9aa-f99e-414e-826b-6b570d480999",
+  image_url: {
+    sm: "https://algorand-app.s3.amazonaws.com/app-icons/Pera-walletconnect-128.png",
+    md: "https://algorand-app.s3.amazonaws.com/app-icons/Pera-walletconnect-128.png",
+    lg: "https://algorand-app.s3.amazonaws.com/app-icons/Pera-walletconnect-128.png",
+  },
   app: {
     browser: "",
     ios: "https://apps.apple.com/us/app/algorand-wallet/id1459898525",
@@ -38,27 +45,3 @@ const officialAlgorandWallet: IAppEntry = {
 export const registry: IAppRegistry = {
   [officialAlgorandWallet.id]: officialAlgorandWallet,
 };
-
-export function getAppLogoUrl(id: string): string {
-  if (id === officialAlgorandWallet.id) {
-    return "https://algorand-app.s3.amazonaws.com/app-icons/Pera-walletconnect-128.png";
-  }
-  return "";
-}
-
-export function formatMobileRegistryEntry(entry: IAppEntry, platform: "mobile" | "desktop" = "mobile"): IMobileRegistryEntry {
-  return {
-    name: entry.name || "",
-    shortName: entry.metadata.shortName || "",
-    color: entry.metadata.colors.primary || "",
-    logo: entry.id ? getAppLogoUrl(entry.id) : "",
-    universalLink: entry[platform].universal || "",
-    deepLink: entry[platform].native || "",
-  };
-}
-
-export function formatMobileRegistry(registry: IAppRegistry, platform: "mobile" | "desktop" = "mobile"): IMobileRegistryEntry[] {
-  return Object.values<any>(registry)
-    .filter(entry => !!entry[platform].universal || !!entry[platform].native)
-    .map((entry) => formatMobileRegistryEntry(entry, platform));
-}

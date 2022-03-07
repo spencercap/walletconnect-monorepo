@@ -16,7 +16,8 @@ class WalletConnectProvider implements IEthereumProvider {
   constructor(opts?: IWCEthRpcConnectionOptions) {
     this.rpc = { infuraId: opts?.infuraId, custom: opts?.rpc };
     this.signer = new JsonRpcProvider(new SignerConnection(opts));
-    this.http = this.setHttpProvider(opts?.chainId || 1);
+    const chainId = (this.signer.connection as SignerConnection).chainId || opts?.chainId || 1;
+    this.http = this.setHttpProvider(chainId);
     this.registerEventListeners();
   }
 
@@ -59,6 +60,15 @@ class WalletConnectProvider implements IEthereumProvider {
       throw new Error(`Cannot request JSON-RPC method (${args.method}) without provided rpc url`);
     }
     return this.http.request(args);
+  }
+
+  public sendAsync(
+    args: RequestArguments,
+    callback: (error: Error | null, response: any) => void,
+  ): void {
+    this.request(args)
+      .then(response => callback(null, response))
+      .catch(error => callback(error, undefined));
   }
 
   public async enable(): Promise<ProviderAccounts> {

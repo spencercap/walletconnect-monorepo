@@ -10,6 +10,11 @@ const pt: TextMap = {
   desktop: "Desktop",
   copy_to_clipboard: "Copiar",
   copied_to_clipboard: "Copiado!",
+  connect_with: "Ligar por meio de",
+  loading: "Carregamento...",
+  something_went_wrong: "Algo correu mal",
+  no_supported_wallets: "Ainda não há carteiras suportadas",
+  no_wallets_found: "Nenhuma carteira encontrada",
 };
 
 export default pt;

@@ -10,6 +10,11 @@ const de: TextMap = {
   desktop: "Desktop",
   copy_to_clipboard: "In die Zwischenablage kopieren",
   copied_to_clipboard: "In die Zwischenablage kopiert!",
+  connect_with: "Verbinden mit Hilfe von",
+  loading: "Laden...",
+  something_went_wrong: "Etwas ist schief gelaufen",
+  no_supported_wallets: "Es gibt noch keine unterstützten Wallet",
+  no_wallets_found: "keine Wallet gefunden",
 };
 
 export default de;

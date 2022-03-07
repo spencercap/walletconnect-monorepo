@@ -121,7 +121,7 @@ export const WALLETCONNECT_STYLE_SHEET = `:root {
   font-weight: 600;
   letter-spacing: 0;
   line-height: 1.1875em;
-  margin: 10px 0 30px 0;
+  margin: 10px 0 20px 0;
   text-align: center;
   width: 100%;
 }
@@ -355,6 +355,22 @@ export const WALLETCONNECT_STYLE_SHEET = `:root {
   background: #d4d5d9;
 }
 
+.walletconnect-modal__single_wallet {
+  display: flex;
+  justify-content: center;
+  margin-top: 7px;
+  margin-bottom: 18px;
+}
+
+.walletconnect-modal__single_wallet a {
+  cursor: pointer;
+  color: rgb(64, 153, 255);
+  font-size: 21px;
+  font-weight: 800;
+  text-decoration: none !important;
+  margin: 0 auto;
+}
+
 .walletconnect-modal__mobile__toggle_selector {
   width: calc(50% - 8px);
   background: white;
@@ -416,8 +432,7 @@ export const WALLETCONNECT_STYLE_SHEET = `:root {
 .walletconnect-connect__buttons__wrapper__wrap {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 @media only screen and (min-width: 768px) {
@@ -476,5 +491,25 @@ export const WALLETCONNECT_STYLE_SHEET = `:root {
     font-size: 16px;
     margin-top: 12px;
   }
+}
+
+.walletconnect-search__input {
+  border: none;
+  background: #d4d5d9;
+  border-style: none;
+  padding: 8px 16px;
+  outline: none;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: 16px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  border-radius: 8px;
+  width: calc(100% - 16px);
+  margin: 0;
+  margin-bottom: 8px;
 }
 `;
