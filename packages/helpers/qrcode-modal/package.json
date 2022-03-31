@@ -9,7 +9,8 @@
     "build:pre": "run-s clean build:svg build:css",
     "build:umd": "webpack",
     "build:cjs": "microbundle --no-compress -f cjs --alias react=preact/compat,react-dom/test-utils=preact/test-utils,react-dom=preact/compat --tsconfig ./tsconfig.cjs.json",
-    "build": "run-s build:pre build:cjs build:umd",
+    "build:esm": "microbundle --no-pkg-main --no-compress -f esm --alias react=preact/compat,react-dom/test-utils=preact/test-utils,react-dom=preact/compat -o ./dist/esm --tsconfig ./tsconfig.esm.json",
+    "build": "run-s build:pre build:cjs build:umd build:esm",
     "test": "env TS_NODE_PROJECT=\"tsconfig.cjs.json\" mocha -r ts-node/register ./test/**/*.spec.ts --exit"
   },
   "keywords": [
@@ -28,9 +29,11 @@
   "homepage": "https://github.com/WalletConnect/walletconnect-monorepo/",
   "license": "Apache-2.0",
   "source": "src/index.ts",
-  "main": "dist/cjs/index.js",
-  "types": "dist/cjs/index.d.ts",
-  "unpkg": "dist/umd/index.min.js",
+  "main": "./dist/cjs/index.js",
+  "browser": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "unpkg": "./dist/umd/index.min.js",
   "files": [
     "dist"
   ],
