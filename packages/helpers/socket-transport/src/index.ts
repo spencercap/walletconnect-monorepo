@@ -15,8 +15,10 @@ import {
 
 import NetworkMonitor from "./network";
 
-// @ts-ignore
-const WS = typeof global.WebSocket !== "undefined" ? global.WebSocket : require("ws");
+// @NOts-ignore
+// const WS = typeof global.WebSocket !== "undefined" ? global.WebSocket : require("ws");
+
+const WS = isBrowser() ? window.WebSocket : require("ws");
 
 // -- SocketTransport ------------------------------------------------------ //
 
@@ -248,21 +250,21 @@ function getWebSocketUrl(_url: string, protocol: string, version: number): strin
   const url = _url.startsWith("https")
     ? _url.replace("https", "wss")
     : _url.startsWith("http")
-    ? _url.replace("http", "ws")
-    : _url;
+      ? _url.replace("http", "ws")
+      : _url;
   const splitUrl = url.split("?");
   const params = isBrowser()
     ? {
-        protocol,
-        version,
-        env: "browser",
-        host: getLocation()?.host || "",
-      }
+      protocol,
+      version,
+      env: "browser",
+      host: getLocation()?.host || "",
+    }
     : {
-        protocol,
-        version,
-        env: detectEnv()?.name || "",
-      };
+      protocol,
+      version,
+      env: detectEnv()?.name || "",
+    };
   const queryString = appendToQueryString(getQueryString(splitUrl[1] || ""), params);
   return splitUrl[0] + "?" + queryString;
 }
