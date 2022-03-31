@@ -1,5 +1,5 @@
 {
-  "name": "@walletconnect/qrcode-modal",
+  "name": "algo-wc-qr-modal-ncc",
   "version": "1.7.7",
   "description": "QR Code Modal for WalletConnect",
   "scripts": {
@@ -9,7 +9,7 @@
     "build:pre": "run-s clean build:svg build:css",
     "build:umd": "webpack",
     "build:cjs": "microbundle --no-compress -f cjs --alias react=preact/compat,react-dom/test-utils=preact/test-utils,react-dom=preact/compat --tsconfig ./tsconfig.cjs.json",
-    "build:esm": "microbundle --no-pkg-main --no-compress -f esm --alias react=preact/compat,react-dom/test-utils=preact/test-utils,react-dom=preact/compat -o ./dist/esm --tsconfig ./tsconfig.esm.json",
+    "build:esm": "microbundle --no-pkg-main -f esm --alias react=preact/compat,react-dom/test-utils=preact/test-utils,react-dom=preact/compat -o ./dist/esm/index.js --tsconfig ./tsconfig.esm.json",
     "build": "run-s build:pre build:cjs build:umd build:esm",
     "test": "env TS_NODE_PROJECT=\"tsconfig.cjs.json\" mocha -r ts-node/register ./test/**/*.spec.ts --exit"
   },
